@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using tut12.Configuration;
 
 namespace tut12.Models
 {
@@ -28,41 +29,12 @@ namespace tut12.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            //FluentAPI
+            modelBuilder.ApplyConfiguration(new CustomerEfConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeEfConfiguration());
+            modelBuilder.ApplyConfiguration(new ConfectioneryEfConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderEfConfiguration());
+            modelBuilder.ApplyConfiguration(new Conf_OrderEfConfiguration());
 
-            modelBuilder.Entity<Confectionery_Order>(en =>
-            {
-                en.HasKey(e => new { e.IdConfectionery, e.IdOrder });
-
-            });
-
-
-            modelBuilder.Entity<Customer>(en =>
-            {
-                en.Property(e => e.IdClient).ValueGeneratedOnAdd();
-                en.Property(e => e.Name).IsRequired();
-                en.Property(e => e.Surname).IsRequired();
-
-            });
-            modelBuilder.Entity<Employee>(en =>
-            {
-                en.Property(e => e.IdEmployee).ValueGeneratedOnAdd();
-                en.Property(e => e.Name).IsRequired();
-                en.Property(e => e.Surname).IsRequired();
-
-            });
-            modelBuilder.Entity<Confectionery>(en =>
-            {
-                en.Property(e => e.IdConfectionery).ValueGeneratedOnAdd();
-                en.Property(e => e.Name).IsRequired();
-                en.Property(e => e.PricePerItem).IsRequired();
-                en.Property(e => e.Type).IsRequired();
-
-            });
-            modelBuilder.Entity<Order>(en =>
-            {
-                en.Property(e => e.IdOrder).ValueGeneratedOnAdd();
-            });
         }
     }
 }

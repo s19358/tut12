@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tut12.Models;
 
 namespace tut12.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20200607103900_LittleChangesOnTables")]
+    partial class LittleChangesOnTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,29 +44,6 @@ namespace tut12.Migrations
                     b.HasKey("IdConfectionery");
 
                     b.ToTable("Confectionery");
-
-                    b.HasData(
-                        new
-                        {
-                            IdConfectionery = 1,
-                            Name = "Macaron",
-                            PricePerItem = 5f,
-                            Type = "type1"
-                        },
-                        new
-                        {
-                            IdConfectionery = 2,
-                            Name = "Cake",
-                            PricePerItem = 7.5f,
-                            Type = "type2"
-                        },
-                        new
-                        {
-                            IdConfectionery = 3,
-                            Name = "Cookies",
-                            PricePerItem = 3.5f,
-                            Type = "type3"
-                        });
                 });
 
             modelBuilder.Entity("tut12.Models.Confectionery_Order", b =>
@@ -88,29 +67,6 @@ namespace tut12.Migrations
                     b.HasIndex("IdOrder");
 
                     b.ToTable("Confectionery_Order");
-
-                    b.HasData(
-                        new
-                        {
-                            IdConfectionery = 1,
-                            IdOrder = 1,
-                            Notes = "note1",
-                            Quantity = 25
-                        },
-                        new
-                        {
-                            IdConfectionery = 2,
-                            IdOrder = 2,
-                            Notes = "note2",
-                            Quantity = 30
-                        },
-                        new
-                        {
-                            IdConfectionery = 3,
-                            IdOrder = 3,
-                            Notes = "note3",
-                            Quantity = 20
-                        });
                 });
 
             modelBuilder.Entity("tut12.Models.Customer", b =>
@@ -133,26 +89,6 @@ namespace tut12.Migrations
                     b.HasKey("IdClient");
 
                     b.ToTable("Customer");
-
-                    b.HasData(
-                        new
-                        {
-                            IdClient = 1,
-                            Name = "Aysenur",
-                            Surname = "Ozgur"
-                        },
-                        new
-                        {
-                            IdClient = 2,
-                            Name = "Merve",
-                            Surname = "Unal"
-                        },
-                        new
-                        {
-                            IdClient = 3,
-                            Name = "Busra",
-                            Surname = "Yilmaz"
-                        });
                 });
 
             modelBuilder.Entity("tut12.Models.Employee", b =>
@@ -175,26 +111,6 @@ namespace tut12.Migrations
                     b.HasKey("IdEmployee");
 
                     b.ToTable("Employee");
-
-                    b.HasData(
-                        new
-                        {
-                            IdEmployee = 1,
-                            Name = "Reyhan",
-                            Surname = "Ozgur"
-                        },
-                        new
-                        {
-                            IdEmployee = 2,
-                            Name = "Simal",
-                            Surname = "Can"
-                        },
-                        new
-                        {
-                            IdEmployee = 3,
-                            Name = "Ali",
-                            Surname = "Yilmaz"
-                        });
                 });
 
             modelBuilder.Entity("tut12.Models.Order", b =>
@@ -228,35 +144,6 @@ namespace tut12.Migrations
                     b.HasIndex("IdEmployee");
 
                     b.ToTable("Order");
-
-                    b.HasData(
-                        new
-                        {
-                            IdOrder = 1,
-                            DateAccepted = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateFinished = new DateTime(2020, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IdClient = 1,
-                            IdEmployee = 1,
-                            Notes = "note1"
-                        },
-                        new
-                        {
-                            IdOrder = 2,
-                            DateAccepted = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateFinished = new DateTime(2020, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IdClient = 2,
-                            IdEmployee = 2,
-                            Notes = "note2"
-                        },
-                        new
-                        {
-                            IdOrder = 3,
-                            DateAccepted = new DateTime(2020, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateFinished = new DateTime(2020, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IdClient = 3,
-                            IdEmployee = 3,
-                            Notes = "note3"
-                        });
                 });
 
             modelBuilder.Entity("tut12.Models.Confectionery_Order", b =>
